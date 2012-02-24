@@ -1,18 +1,44 @@
 # Snippets for use with VIM and http://www.vim.org/scripts/script.php?script_id=2540
-#
-# Please contact R.I.Pienaar <rip@devco.net> for additions and feedback,
-# see it in action @ http://www.devco.net/archives/2009/09/22/vim_and_puppet.php
-#
-# Some mods by Mikael Fridh.
-
 
 # Language Constructs
-snippet class
-	class ${1:`Filename('', 'name')`} {
+snippet class Parameterised Classe #1
+	# == Class : $1
+	#
+	# === Parameters
+	#
+	# [*$2*]
+	#
+	# === Variables
+	#
+	# === Examples
+	#
+	# === Authors
+	#
+	# === Copyright
+	#
+	class ${1:classname}(
+		${2:param1} = ${3:param1value}
+	) {
+		${4}
+	}
+snippet class Class #2
+	# == Class : $1
+	#
+	# === Parameters
+	#
+	# === Variables
+	#
+	# === Examples
+	#
+	# === Authors
+	#
+	# === Copyright
+	#
+	class ${1:classname} {
 		${2}
 	}
 snippet node
-	node "${1:`Filename('', 'fqdn')`}" {
+	node "${1:nodename}" {
 		${2}
 	}
 snippet case
@@ -90,47 +116,47 @@ snippet warning
 snippet cron
 	cron { '${1:name}':
 		command	=> "${2}",
-		user	=> "${3:root}",
-		${4}	=> ${5}
+		user    => "${3:root}",
+		${4}    => ${5}
 	}
 snippet exec
 	exec { '${1:name}':
 		command	=> "${2:$1}",
-		user	=> "${3:root}",
-		${4}	=> ${5}
+		user    => "${3:root}",
+		${4}    => ${5}
 	}
 snippet user
 	user { '${1:user}':
-		comment		=> "${2:$1}",
-		ensure		=> present,
-		managehome	=> true,
-		home		=> "${3:/home/$1}"
+		ensure      => present,
+		comment     => "${2:$1}",
+		managehome  => true,
+		home        => "${3:/home/$1}"
 	}
 snippet group
 	group { '${1:group}':
-		ensure	=> ${2:present}
+		ensure => ${2:present}
 	}
 snippet host
 	host { '${1:hostname}':
-		ip	=> ${2:127.0.0.1}
+		ip => ${2:127.0.0.1}
 	}
 snippet mailalias
 	mailalias { '${1:localpart}':
-		recipient	=> "${2:recipient}"
+		recipient => "${2:recipient}"
 	}
 snippet mount
 	mount { '${1:destination path}':
-		ensure	=> ${2:mounted},
-		device	=> "${3:device name or path}"
+		ensure => ${2:mounted},
+		device => "${3:device name or path}"
 	}
 snippet package
 	package { '${1:package name}':
-		ensure	=> ${2:present}
+		ensure => ${2:present}
 	}
 snippet yumrepo
 	yumrepo { '${1:repo name}':
-		descr	=> "${2:$1}",
-		enabled	=> ${3:1}
+		descr   => "${2:$1}",
+		enabled => ${3:1}
 	}
 snippet define
 	define ${1} (${2}) {
@@ -138,12 +164,12 @@ snippet define
 	}
 snippet service
 	service { '${1:service}':
-		enable		=> ${2:true},
-		ensure		=> ${3:running},
-		hasstatus	=> true,
+		ensure    => ${2:running},
+		enable    => ${3:true},
+		hasstatus => true,
 	}
 snippet file
 	file { '${1:path}':
-		${2}	=> ${3}
+		${2} => ${3}
 	}
 
