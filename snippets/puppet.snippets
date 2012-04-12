@@ -2,19 +2,19 @@
 
 # Language Constructs
 snippet class Parameterised Classe #1
-	# == Class : $1
+	# = Class : $1
 	#
-	# === Parameters
+	# == Parameters
 	#
 	# [*$2*]
 	#
-	# === Variables
+	# == Variables
 	#
-	# === Examples
+	# == Examples
 	#
-	# === Authors
+	# == Authors
 	#
-	# === Copyright
+	# == Copyright
 	#
 	class ${1:classname}(
 		${2:param1} = ${3:param1value}
@@ -22,17 +22,17 @@ snippet class Parameterised Classe #1
 		${4}
 	}
 snippet class Class #2
-	# == Class : $1
+	# = Class : $1
 	#
-	# === Parameters
+	# == Parameters
 	#
-	# === Variables
+	# == Variables
 	#
-	# === Examples
+	# == Examples
 	#
-	# === Authors
+	# == Authors
 	#
-	# === Copyright
+	# == Copyright
 	#
 	class ${1:classname} {
 		${2}
@@ -72,7 +72,7 @@ snippet [
 snippet >
 	${1}	=> ${2}
 snippet p:
-	"puppet://puppet/${module_name}/${1:file}"
+	"puppet:///${module_name}/${1:file}"
 #
 # Functions
 snippet alert
@@ -159,15 +159,15 @@ snippet yumrepo
 		enabled => ${3:1}
 	}
 snippet define
-	# == Define : $1
+	# = Define : $1
 	#
-	# === Parameters
+	# == Parameters
 	#
-	# === Examples
+	# == Examples
 	#
-	# === Authors
+	# == Authors
 	#
-	# === Copyright
+	# == Copyright
 	#
 	define ${1:name} (${2:parameters}) {
 		${3}
@@ -182,4 +182,8 @@ snippet file
 	file { '${1:path}':
 		${2} => ${3}
 	}
-
+snippet augeas
+	augeas { '${1:name}':
+		context => '${2:context}',
+		changes => '${3:changes}'
+	}
